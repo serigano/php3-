@@ -14,7 +14,6 @@
  *  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
  */
 
-
 $arr = [
     'r1' => ['c1' => 10, 'c2' => 5, 'c3' => 20],
     'r2' => ['c1' => 7, 'c2' => 8, 'c3' => 12],
@@ -28,9 +27,9 @@ $row_total = [
 ];
 
 $column_total = [
-    'c1' => array_sum(array_column($arr, 'c1')),
-    'c2' => array_sum(array_column($arr, 'c2')),
-    'c3' => array_sum(array_column($arr, 'c3')),
+    'c1' => array_sum(array_column($arr,'c1')),
+    'c2' => array_sum(array_column($arr,'c2')),
+    'c3' => array_sum(array_column($arr,'c3')),
 ];
 
 $all_total = 0;
@@ -39,7 +38,6 @@ foreach ($column_total as $total) {
 }
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -60,36 +58,29 @@ th, td {
 </head>
 <body>
     <table>
-        <?php
-echo 
-"<tr>
-<td></td>
-<td>c1</td>
-<td>c2</td>
-<td>c3</td>
-<td>横合計</td>
-</tr>";
-
-
-for ($i = 1; $i <= count($arr); $i++) {
-    $row_key = "r{$i}";
-    echo "<tr><td>{$row_key}</td>";
-    for ($j = 1; $j <= count($arr[$row_key]); $j++) {
-         $column_key = "c{$j}";
+         <?php
+         echo "<tr>
+         <td></td><td>c1</td><td>c2</td><td>c3</td><td>横合計</td>
+         </tr>";
          
-         echo "<td>{$arr[$row_key][$column_key]}</td>";
-    }
-   
-    echo "<td>{$row_total[$row_key]}</td></tr>";
-}
+         for ($i = 1; $i <= count($arr); $i++) {
+             $row_key = "r{$i}";
+             echo "<tr><td>{$row_key}</td>";
 
-echo "<tr><td>縦合計</td>";
-for ($j = 1; $j <= count($column_total); $j++) {
-    $column_key = "c{$j}";
-    echo "<td>{$column_total[$column_key]}</td>";
-}
-
-echo "<td>{$all_total}</td></tr>";
+             for ($j = 1; $j <= count($arr[$row_key]); $j++) {
+                  $column_key = "c{$j}";
+                  echo "<td>{$arr[$row_key][$column_key]}</td>";
+             }
+             echo "<td>{$row_total[$row_key]}</td></tr>";
+         }
+         
+         echo "<tr><td>縦合計</td>";
+         for ($j = 1; $j <= count($column_total); $j++) {
+             $column_key = "c{$j}";
+             echo "<td>{$column_total[$column_key]}</td>";
+         }
+         
+         echo "<td>{$all_total}</td></tr>";
 
 ?>
     </table>

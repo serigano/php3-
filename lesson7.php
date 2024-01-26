@@ -19,6 +19,9 @@ $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 // ↓
 // 1, 2, 3, 4　←これが画面に表示される
 
+
+// ここで並び替え処理
+
 $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 $count = count($arr);
 
@@ -32,8 +35,8 @@ for ($i=0; $i < $count; $i++) {
         }
     }
 }
-// ここで並び替え処理
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -41,17 +44,19 @@ for ($i=0; $i < $count; $i++) {
 <title>数字並び替えプログラム</title>
 </head>
 <body>
+    <!-- ここに並び替え後を表示 -->
+
     <?php
     $arr_a = "";
     foreach ($arr as $key => $value) {
         $arr_a .= strval($value);
-
         if (count($arr) -1 > $key) {
             $arr_a .=",";
         }
     }
+
     echo $arr_a;
     ?>
-    <!-- ここに並び替え後を表示 -->
+    
 </body>
 </html>
